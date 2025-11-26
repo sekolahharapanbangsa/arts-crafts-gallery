@@ -99,7 +99,7 @@ export default function ArtworkDetail() {
         <Button 
           variant="outline" 
           className="mb-4 sm:mb-6 h-9 sm:h-10"
-          onClick={() => window.history.back()}
+          onClick={() => window.location.href = '/'}
         >
           <ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
           Back
