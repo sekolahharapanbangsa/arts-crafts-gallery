@@ -114,7 +114,7 @@ npm run db:setup  # Automated setup
 # OR manual installation
 
 # 2. Update .env with PostgreSQL URL
-DATABASE_URL="postgresql://username:password@localhost:5432/arts_crafts_gallery"
+DATABASE_URL=""
 
 # 3. Update schema for PostgreSQL
 # Edit prisma/schema.prisma - change provider to "postgresql"
@@ -144,14 +144,14 @@ npm run db:push
 
 #### **✅ PostgreSQL Configuration**
 - **Database**: Neon PostgreSQL (serverless)
-- **Connection**: `postgresql://neondb_owner:npg_xHIsDWLUP86v@ep-round-night-a1fe6il7-pooler.ap-southeast-1.aws.neon.tech/neondb`
+- **Connection**: ``
 - **SSL**: Enabled dengan `sslmode=require`
 - **Performance**: Optimized untuk production
 - **Scalability**: Unlimited concurrent connections
 
 #### **✅ Environment Variables**
 ```env
-DATABASE_URL="postgresql://neondb_owner:npg_xHIsDWLUP86v@ep-round-night-a1fe6il7-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
+DATABASE_URL=""
 NEXT_PUBLIC_APP_URL="https://arts-crafts-gallery.vercel.app"
 NODE_ENV="development"
 ```
@@ -189,7 +189,7 @@ docker run --name postgres-arts \
   -d postgres:15
 
 # Update .env with:
-# DATABASE_URL="postgresql://arts_user:arts_password@localhost:5432/arts_crafts_gallery"
+# DATABASE_URL=""
 ```
 
 ### Installation
@@ -260,10 +260,10 @@ NODE_ENV="development"
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `DATABASE_URL` | PostgreSQL connection string | `postgresql://postgres:password@localhost:5432/arts_crafts_gallery` |
+| `DATABASE_URL` | PostgreSQL connection string | `` |
 | `NEXT_PUBLIC_APP_URL` | Base URL for the application | `http://localhost:3000` |
 | `NEXT_PUBLIC_APP_NAME` | Name of the gallery application | `Arts & Crafts Gallery` |
-| `NEXT_PUBLIC_ADMIN_PASSWORD` | Password for admin panel access | `admin123` |
+| `NEXT_PUBLIC_ADMIN_PASSWORD` | Password for admin panel access | `` |
 | `UPLOAD_DIR` | Directory for uploaded files | `./public/uploads` |
 | `MAX_FILE_SIZE` | Maximum file upload size in bytes | `5242880` (5MB) |
 | `NEXTAUTH_SECRET` | Secret key for authentication | Generate random string |
