@@ -85,8 +85,12 @@ export async function POST(request: NextRequest) {
       }
     })
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+    const host = request.headers.get('host')
+    const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http'
+    const baseUrl = `${protocol}://${host}`
+    
     const qrCodeUrl = `${baseUrl}/artwork/${artwork.id}`
+    
     
     const qrCodeDataUrl = await QRCode.toDataURL(qrCodeUrl, {
       width: 200,
