@@ -1,0 +1,29 @@
+{
+  "name": "Arts & Crafts Gallery",
+  "short_name": "Arts Gallery",
+  "description": "A modern gallery platform for showcasing student artwork and crafts",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#8b5cf6",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["education", "arts", "gallery"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "id": "arts-crafts-gallery"
+}

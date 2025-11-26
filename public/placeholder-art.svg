@@ -1,0 +1,10 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#f3f4f6"/>
+  <g transform="translate(200, 200)">
+    <circle cx="0" cy="-50" r="30" fill="#9ca3af"/>
+    <path d="M -80 50 L -40 -20 L 0 10 L 40 -30 L 80 50 Z" fill="#d1d5db"/>
+    <circle cx="-60" cy="-20" r="15" fill="#fbbf24"/>
+    <rect x="-100" y="60" width="200" height="80" fill="#e5e7eb" rx="10"/>
+    <text x="0" y="100" text-anchor="middle" fill="#6b7280" font-family="Arial, sans-serif" font-size="16">Artwork Image</text>
+  </g>
+</svg>

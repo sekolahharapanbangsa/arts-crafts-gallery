@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(255)
+  nis       String    @unique @db.VarChar(50)
+  class     String    @db.VarChar(20)
+  grade     String    @db.VarChar(10) // SMP or SMA
+  photoUrl  String?   @db.Text
+  artworks  Artwork[]
+  createdAt DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime  @updatedAt @db.Timestamptz(6)
+
+  @@index([grade])
+  @@index([class])
+  @@index([nis])
+}
+
+model Artwork {
+  id            Int       @id @default(autoincrement())
+  title         String    @db.VarChar(500)
+  description   String?   @db.Text
+  photoUrl      String    @db.Text     // URL foto bukti karya
+  qrCodeUrl     String?   @db.Text     // URL QR code yang mengarah ke link bukti karya
+  yearCreated   Int
+  subject       String    @default("Art & Craft") @db.VarChar(100)
+  student       Student   @relation(fields: [studentId], references: [id])
+  studentId     Int
+  likes         Like[]
+  saves         Save[]
+  views         View[]
+  likeCount     Int       @default(0)
+  saveCount     Int       @default(0)
+  viewCount     Int       @default(0)
+  createdAt     DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt     DateTime  @updatedAt @db.Timestamptz(6)
+
+  @@index([studentId])
+  @@index([subject])
+  @@index([yearCreated])
+  @@index([createdAt])
+}
+
+model Like {
+  id        Int       @id @default(autoincrement())
+  artwork   Artwork   @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+  artworkId Int
+  sessionId String    @db.VarChar(255) // Use session ID or IP for anonymous users
+  createdAt DateTime  @default(now()) @db.Timestamptz(6)
+
+  @@unique([artworkId, sessionId])
+  @@index([sessionId])
+}
+
+model Save {
+  id        Int       @id @default(autoincrement())
+  artwork   Artwork   @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+  artworkId Int
+  sessionId String    @db.VarChar(255) // Use session ID or IP for anonymous users
+  createdAt DateTime  @default(now()) @db.Timestamptz(6)
+
+  @@unique([artworkId, sessionId])
+  @@index([sessionId])
+}
+
+model View {
+  id        Int       @id @default(autoincrement())
+  artwork   Artwork   @relation(fields: [artworkId], references: [id], onDelete: Cascade)
+  artworkId Int
+  sessionId String    @db.VarChar(255) // Use session ID or IP for anonymous users
+  createdAt DateTime  @default(now()) @db.Timestamptz(6)
+
+  @@unique([artworkId, sessionId])
+  @@index([sessionId])
+}
